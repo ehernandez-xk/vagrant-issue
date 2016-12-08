@@ -18,6 +18,7 @@ sudo mkdir /yyy
 exit
 vagrant halt
 vagrant up
+vagrant ssh
 ls -la /xxx
 ls: /xxx: No such file or directory
 ```
@@ -25,3 +26,17 @@ ls: /xxx: No such file or directory
 and the directories xxx yyy are gone
 
 Vagrant restores all the files
+
+### Another weird behaviour, the docker images are not deleted.
+
+```
+vagrant ssh
+docker pull alpine
+exit
+vagrant halt
+vagrant up
+vagrant ssh
+docker images
+```
+
+The docker image is still there.

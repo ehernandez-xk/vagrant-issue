@@ -3,7 +3,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "xk_test/boot2docker-example"
 
   #mount directory
-  config.vm.synced_folder ".", "/vagrant", type: "nfs", mount_options: ["nolock", "vers=3", "udp"], id: "nfs-sync"
+  config.vm.synced_folder ".", "/vagrant"
 
   #provision xxx directory
   config.vm.provision "shell", inline: "mkdir /xxx"

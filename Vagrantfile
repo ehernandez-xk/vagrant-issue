@@ -1,6 +1,3 @@
-# Don't touch unless you know what you're doing!
-# Use host.yaml to manage the local environment options for this project
-
 require 'yaml'
 
 host_sync_folder = "/vagrant"

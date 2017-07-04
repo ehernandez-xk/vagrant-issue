@@ -1,14 +1,14 @@
+ENV['VAGRANT_DEFAULT_PROVIDER'] = 'docker'
+
 Vagrant.configure("2") do |config|
-  config.vm.box_version = "1.12.2"
-  config.vm.box = "xk_test/boot2docker-example"
 
-  #mount directory
-  config.vm.synced_folder ".", "/vagrant"
-
-  #provision xxx directory
-  config.vm.provision "shell", inline: "mkdir /xxx"
-
-  config.vm.provider "virtualbox" do |v|
-    v.customize ["modifyvm", :id, "--memory", "3072"]
+  config.vm.define "base" do |a|
+    a.vm.provider "docker" do |d|
+      d.image = "alpine"
+      d.name = "base"
+      d.vagrant_vagrantfile = "./dockerHost/Vagrantfile"
+      d.force_host_vm = true
+      d.volumes = ["/vagrant:/project"]
+    end
   end
 end
